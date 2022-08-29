@@ -38,51 +38,6 @@ class PythonOrgSearch(unittest.TestCase):
         elem.send_keys(Keys.RETURN)
         self.assertIn("Ver todos", driver.page_source)
 
-    def test_change_window(self):   
-
-        driver = self.driver
-        driver.get("http://www.google.com.co")
-        driver.execute_script("window.open('');")
-        driver.switch_to.window(driver.window_handles[1])
-        driver.get("https://accounts.google.com")
-        elem = driver.find_element(By.XPATH,"//*[@id='identifierId']")
-        elem.send_keys("juane.acevedoc@gmail.com")
-        elem.send_keys(Keys.RETURN)
-        time.sleep(3)
-
-    def test_back_forward(self):   
-
-        driver = self.driver
-        driver.get("http://www.google.com.co")
-        time.sleep(3)
-        driver.get("https://www.youtube.com")
-        time.sleep(3)
-        driver.back()
-
-    def test_toggle_click(self):   
-
-        driver = self.driver
-        driver.get("https://www.w3schools.com/howto/howto_css_switch.asp")
-        select = driver.find_element(By.XPATH,"//*[@id='main']/label[3]/div")
-        select.click()
-        time.sleep(3)
-        select.click()
-        time.sleep(3)
-        
-
-    def test_select_list(self):   
-
-        driver = self.driver
-        driver.get("https://www.w3schools.com/howto/howto_custom_select.asp")
-        select = driver.find_element(By.XPATH,"//*[@id='main']/div[3]/div[1]/select")
-        options = select.find_elements(By.TAG_NAME,"option")
-                                                                            
-        for option in options:
-            print(option.get_attribute("value"))
-
-        seleccionar = Select(driver.find_element(By.XPATH,"//*[@id='main']/div[3]/div[1]/select"))
-        seleccionar.select_by_value("2")
-
 
 if __name__ == "__main__":
     unittest.main()
