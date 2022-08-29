@@ -4,13 +4,14 @@ import unittest
 from typing_extensions import Self
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path="C:\driver\chromedriver")
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
     
     def tearDown(self):
         self.driver.close()
